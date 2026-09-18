@@ -2,8 +2,8 @@
 
 **An ASCII-transparent, byte-order-independent variable-length Unicode encoding.**
 
-**Author:** [Your Name]  
-**Contact:** [your@email.com]
+**Author:** [刘占江]  
+**Contact:** [jny7@163.com]
 
 [![IANA Registration](https://img.shields.io/badge/IANA-registration%20pending-yellow)](https://www.iana.org/assignments/character-sets/character-sets.xhtml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
