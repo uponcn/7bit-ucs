@@ -24,7 +24,7 @@ The name `7bit-ucs` stands for "7-bit payload, Unicode Character Set". The alias
 This project is created and maintained by:
 
 - **Author:** [刘占江]
-- **Email:** [uponcn@email.com]
+- **Email:** [jny7@163.com]
 - **GitHub:** [@uponcn](https://github.com/uponcn)
 
 For questions, suggestions, or collaboration, please open an issue or contact the author directly.
@@ -159,8 +159,8 @@ MIT License. See [LICENSE](LICENSE).
 
 ## Contact
 
-- **Author:** [Your Name]
-- **Email:** [your@email.com]
+- **Author:** [刘占江]
+- **Email:** [jny7@163.com]
 
 ## References
 
