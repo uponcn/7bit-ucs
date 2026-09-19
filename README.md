@@ -103,36 +103,41 @@ This is the 3-byte overlong encoding of U+0000. Decoders that recognize it MUST 
 
 ## Implementations
 
-Reference implementations are provided in five languages:
+Each language is provided as a **single self-contained file**:
 
-| Language | Directory | Status |
-|----------|-----------|--------|
-| C | [`implementations/c/`](implementations/c/) | Complete |
-| Rust | [`implementations/rust/`](implementations/rust/) | Complete |
-| Python | [`implementations/python/`](implementations/python/) | Complete |
-| Java | [`implementations/java/`](implementations/java/) | Complete |
-| Go | [`implementations/go/`](implementations/go/) | Complete |
+| Language | File | Run self-test |
+|----------|------|---------------|
+| C | [`implementations/c/ucs7.c`](implementations/c/ucs7.c) | `cc -std=c99 -DUCS7_SELFTEST implementations/c/ucs7.c -o ucs7_test && ./ucs7_test` |
+| Rust | [`implementations/rust/ucs7.rs`](implementations/rust/ucs7.rs) | `rustc --test implementations/rust/ucs7.rs -o ucs7_test && ./ucs7_test` |
+| Python | [`implementations/python/ucs7.py`](implementations/python/ucs7.py) | `python3 implementations/python/ucs7.py` |
+| Java | [`implementations/java/Ucs7.java`](implementations/java/Ucs7.java) | `java implementations/java/Ucs7.java` (JDK 11+) |
+| Go | [`implementations/go/ucs7.go`](implementations/go/ucs7.go) | `go run implementations/go/ucs7.go` |
 
 All implementations pass the shared conformance test suite in [`tests/`](tests/).
 
 ## Testing
 
+Each single-file implementation contains its own self-test that can be
+run directly:
+
 ```bash
-# Python
-python3 tests/run_tests.py
+# C
+cc -std=c99 -Wall -Wextra -DUCS7_SELFTEST implementations/c/ucs7.c -o ucs7_test && ./ucs7_test
 
 # Rust
-cd implementations/rust && cargo test
+rustc --test implementations/rust/ucs7.rs -o ucs7_rust_test && ./ucs7_rust_test
+
+# Python
+python3 implementations/python/ucs7.py
+
+# Java (JDK 11+)
+java implementations/java/Ucs7.java
 
 # Go
-cd implementations/go && go test ./...
+go run implementations/go/ucs7.go
 
-# C
-cd implementations/c && make test
-
-# Java
-cd implementations/java && ./gradlew test
-```
+# Cross-language conformance suite
+python3 tests/run_tests.py
 
 ## IANA Registration
 
