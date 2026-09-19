@@ -1,0 +1,82 @@
+# .gitignore for 7bit-ucs
+# Author: 刘占江 (Liu Zhanjiang)
+# Email:  jny7@163.com
+# GitHub: https://github.com/uponcn/7bit-ucs
+
+# ---- General ----
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.code-workspace
+
+# ---- C ----
+*.o
+*.a
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+*.out
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+*.gcda
+*.gcno
+*.gcov
+
+# ---- Rust ----
+target/
+Cargo.lock
+**/*.rs.bk
+*.pdb
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ---- Java ----
+*.class
+*.jar
+*.war
+*.ear
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+out/
+
+# ---- Go ----
+*.test
+*.prof
+vendor/
+bin/
+
+# ---- Editors / IDEs ----
+*.sublime-project
+*.sublime-workspace
+*.iml
+
+# ---- OS ----
+._*
+.Spotlight-V100
+.Trashes
