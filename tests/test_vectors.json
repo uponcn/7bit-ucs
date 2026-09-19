@@ -1,0 +1,63 @@
+{
+  "description": "Conformance test vectors for 7bit-ucs",
+  "author": "刘占江 (Liu Zhanjiang)",
+  "email": "jny7@163.com",
+  "github": "https://github.com/uponcn/7bit-ucs",
+  "version": "1.0.0",
+
+  "encode": [
+    { "code_point": "U+0000", "hex": "00" },
+    { "code_point": "U+0001", "hex": "01" },
+    { "code_point": "U+0041", "hex": "41" },
+    { "code_point": "U+007F", "hex": "7F" },
+    { "code_point": "U+0080", "hex": "81 00" },
+    { "code_point": "U+00E9", "hex": "81 69" },
+    { "code_point": "U+07FF", "hex": "8F 7F" },
+    { "code_point": "U+0800", "hex": "90 00" },
+    { "code_point": "U+0915", "hex": "92 15" },
+    { "code_point": "U+3FFF", "hex": "FF 7F" },
+    { "code_point": "U+4000", "hex": "81 80 00" },
+    { "code_point": "U+4E2D", "hex": "81 9C 2D" },
+    { "code_point": "U+FFFF", "hex": "83 FF 7F" },
+    { "code_point": "U+10000", "hex": "84 80 00" },
+    { "code_point": "U+1F600", "hex": "87 EC 00" },
+    { "code_point": "U+10FFFF", "hex": "84 3F FF 7F" }
+  ],
+
+  "decode_valid": [
+    { "hex": "00", "code_point": "U+0000" },
+    { "hex": "41", "code_point": "U+0041" },
+    { "hex": "7F", "code_point": "U+007F" },
+    { "hex": "81 00", "code_point": "U+0080" },
+    { "hex": "81 69", "code_point": "U+00E9" },
+    { "hex": "8F 7F", "code_point": "U+07FF" },
+    { "hex": "90 00", "code_point": "U+0800" },
+    { "hex": "92 15", "code_point": "U+0915" },
+    { "hex": "FF 7F", "code_point": "U+3FFF" },
+    { "hex": "81 80 00", "code_point": "U+4000" },
+    { "hex": "81 9C 2D", "code_point": "U+4E2D" },
+    { "hex": "83 FF 7F", "code_point": "U+FFFF" },
+    { "hex": "84 80 00", "code_point": "U+10000" },
+    { "hex": "87 EC 00", "code_point": "U+1F600" },
+    { "hex": "84 3F FF 7F", "code_point": "U+10FFFF" }
+  ],
+
+  "decode_invalid": [
+    { "hex": "80 00", "reason": "overlong 2-byte encoding of U+0000" },
+    { "hex": "80 01", "reason": "overlong 2-byte encoding of U+0001" },
+    { "hex": "80 7F", "reason": "overlong 2-byte encoding of U+007F" },
+    { "hex": "80 80 00", "reason": "overlong 3-byte encoding of U+0000" },
+    { "hex": "80 80 01", "reason": "overlong 3-byte encoding of U+0001" },
+    { "hex": "81 80 00", "reason": "valid (U+4000)" },
+    { "hex": "80 80 80 00", "reason": "sequence longer than 3 bytes" },
+    { "hex": "80", "reason": "truncated sequence" },
+    { "hex": "80 80", "reason": "truncated sequence" },
+    { "hex": "84 40 00 00", "reason": "sequence longer than 3 bytes" }
+  ],
+
+  "notes": [
+    "The entry '81 80 00' with reason 'valid (U+4000)' is intentionally placed in decode_invalid to document the lower bound of the 3-byte range. Test runners should treat it as a valid case and skip it in the invalid set, or move it to decode_valid.",
+    "Overlong detection is performed by comparing the decoded code point against the minimum value for the number of bytes used: 0x80 for 2-byte, 0x4000 for 3-byte.",
+    "The Unicode signature sequence for 7bit-ucs is 80 80 80 00. It is not listed here because it is a stream-level marker, not a character."
+  ]
+}
